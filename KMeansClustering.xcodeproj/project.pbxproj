@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27716F5A1AABDA65000409F2 /* kmeansclusteringdata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27716F581AABDA65000409F2 /* kmeansclusteringdata.cpp */; };
 		27EF95451AABD42300601B4C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27EF95441AABD42300601B4C /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		27716F581AABDA65000409F2 /* kmeansclusteringdata.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = kmeansclusteringdata.cpp; sourceTree = "<group>"; };
+		27716F591AABDA65000409F2 /* kmeansclusteringdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kmeansclusteringdata.h; sourceTree = "<group>"; };
 		27EF95411AABD42300601B4C /* KMeansClustering */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = KMeansClustering; sourceTree = BUILT_PRODUCTS_DIR; };
 		27EF95441AABD42300601B4C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				27EF95441AABD42300601B4C /* main.cpp */,
+				27716F581AABDA65000409F2 /* kmeansclusteringdata.cpp */,
+				27716F591AABDA65000409F2 /* kmeansclusteringdata.h */,
 			);
 			path = KMeansClustering;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27716F5A1AABDA65000409F2 /* kmeansclusteringdata.cpp in Sources */,
 				27EF95451AABD42300601B4C /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -202,6 +208,7 @@
 		27EF95491AABD42300601B4C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -209,6 +216,7 @@
 		27EF954A1AABD42300601B4C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -232,6 +240,7 @@
 				27EF954A1AABD42300601B4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
