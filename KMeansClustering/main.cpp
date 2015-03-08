@@ -23,7 +23,10 @@
 #include "kmeansclusteringdata.h"
 
 int main(int argc, const char *argv[]) {
-    // insert code here...
-    cout << "Hello, World!\n";
+    
+    string file;
+    cout << "File:" << endl;
+    cin >> file;
+    
     return 0;
 }

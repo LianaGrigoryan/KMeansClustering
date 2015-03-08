@@ -14,8 +14,13 @@
 #define __KMeansClustering__kmeansclusteringdata__
 
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <cfloat>
 #include <vector>
 #include <random>
+#include <cassert>
 using namespace std;
 
 struct DataPoint;
@@ -24,14 +29,13 @@ struct Cluster;
 struct DataPoint {
     vector<float> values;
     Cluster *cluster;
-    void assignCluster(vector<Cluster> clusters);
-    float distanceToCluster();
+    float assignCluster(vector<Cluster> clusters);  // Returns distance
 };
 
 struct Cluster {
     vector<DataPoint *> dataPoints;
     vector<float> center;
-    void recalculateCenter();
+    void recalculateCenter();   // Clears data points
 };
 
 class KMeansClusteringData {
@@ -45,7 +49,7 @@ private:
 public:
     
     // Parses file into private variables
-    void readARFF(string file);
+    void readARFF(ifstream file);
     
     // Returns sum of squared distances from each point to its cluster center
     float iterate(int k, bool newPoints);
