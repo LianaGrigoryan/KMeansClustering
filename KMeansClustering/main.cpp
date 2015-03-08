@@ -20,8 +20,7 @@
  
  */
 
-#include <iostream>
-using namespace std;
+#include "kmeansclusteringdata.h"
 
 int main(int argc, const char *argv[]) {
     // insert code here...
