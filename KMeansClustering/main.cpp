@@ -6,6 +6,11 @@
     7 March 2015
     Mike Yeung
  
+    Compile with
+    "g++ -o cluster -std=gnu++11 -O3 kmeansclusteringdata.cpp main.cpp".
+     
+    Run with "./cluster". There are no command line arguments.
+ 
     Implementation of k-means clustering on .arff files with numeric attributes.
     This reads in a file, then asks the user for a value of k. It starts by
     initializing the cluster centers to k random, different data points. At each
