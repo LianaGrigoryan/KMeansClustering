@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DAE46E97-FCB5-446B-A9F8-A6988AFB4F22</string>
+	<key>IDESourceControlProjectName</key>
+	<string>KMeansClustering</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CC7189DCB69B56628EA8FA6693946FEA954CD0C0</key>
+		<string>https://github.com/mikeyeung123/k-means-clustering.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>KMeansClustering.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CC7189DCB69B56628EA8FA6693946FEA954CD0C0</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/mikeyeung123/k-means-clustering.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CC7189DCB69B56628EA8FA6693946FEA954CD0C0</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CC7189DCB69B56628EA8FA6693946FEA954CD0C0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>KMeansClustering</string>
+		</dict>
+	</array>
+</dict>
+</plist>
