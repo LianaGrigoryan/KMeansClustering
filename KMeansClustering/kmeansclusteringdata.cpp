@@ -154,16 +154,23 @@ float KMeansClusteringData::iterateOld() {
     return assignClusters();
 }
 
-float KMeansClusteringData::iterateUntilNoReassignment(int k) {
+float KMeansClusteringData::iterateUntilNoReassignment(int k, int times) {
     assert(k >= dataPoints.size());
-    float distances = iterateNew(k);
+    float minDistances = FLT_MAX;
+    float distances;
     float temp;
-    while (true) {
-        temp = iterateOld();
-        if (distances == temp) {
-            break;
+    for (int i = 0; i < times; i++) {
+        distances = iterateNew(k);
+        while (true) {
+            temp = iterateOld();
+            if (distances == temp) {
+                break;
+            }
+            distances = temp;
         }
-        distances = temp;
+        if (distances < minDistances) {
+            minDistances = distances;
+        }
     }
-    return distances;
+    return minDistances;
 }

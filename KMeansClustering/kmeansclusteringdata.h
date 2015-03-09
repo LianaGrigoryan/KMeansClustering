@@ -59,7 +59,7 @@ public:
     float iterateOld();
     
     // Iterates until no point reassigned to different cluster
-    float iterateUntilNoReassignment(int k);
+    float iterateUntilNoReassignment(int k, int times);
 };
 
 #endif
