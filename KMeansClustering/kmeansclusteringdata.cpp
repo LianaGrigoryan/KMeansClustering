@@ -12,6 +12,7 @@
 
 #include "kmeansclusteringdata.h"
 
+// Simple Euclidean distance
 float distance(vector<float> a, vector<float> b) {
     int size = (int)a.size();
     assert(size == b.size());
@@ -22,6 +23,14 @@ float distance(vector<float> a, vector<float> b) {
     return sqrt(squaredDistances);
 }
 
+// Generates a random number from 0 to values - 1
+int random(int values) {
+    default_random_engine generator;
+    uniform_int_distribution<int> distribution(0, values - 1);
+    return distribution(generator);
+}
+
+// Assigns data point to nearest cluster and returns distance to it
 float DataPoint::assignCluster(vector<Cluster *> clusters) {
     float minDistance = FLT_MAX;
     float tempDistance;
@@ -38,6 +47,7 @@ float DataPoint::assignCluster(vector<Cluster *> clusters) {
     return minDistance;
 }
 
+// Recalculates center of cluster to average of its data points' values
 void Cluster::recalculateCenter() {
     int numberOfAttributes = (int)center.size();
     int numberOfPoints = (int)dataPoints.size();
@@ -54,12 +64,31 @@ void Cluster::recalculateCenter() {
     dataPoints.clear();
 }
 
+// Assigns all data points to clusters. If cluster has no points, it chooses a
+// new random data point as its center.
 float KMeansClusteringData::assignClusters() {
+    
     float distances = 0;
     int numberOfPoints = (int)dataPoints.size();
     for (int i = 0; i < numberOfPoints; i++) {
         distances += pow(dataPoints[i]->assignCluster(clusters), 2);
     }
+    
+    int numberOfClusters = (int)clusters.size();
+    for (int i = 0; i < numberOfClusters; i++) {
+        if (clusters[i]->dataPoints.size() == 0) {
+            DataPoint *randomPoint;
+            do {
+                randomPoint = dataPoints[random((int)dataPoints.size())];
+            } while (randomPoint->cluster->dataPoints.size() < 2);
+            clusters[i]->center = randomPoint->values;
+            for (int j = 0; j < numberOfClusters; j++) {
+                clusters[j]->dataPoints.clear();
+            }
+            return assignClusters();
+        }
+    }
+    
     return distances;
 }
 
@@ -95,18 +124,17 @@ void KMeansClusteringData::readARFF(ifstream file) {
     }
 }
 
+// Initializes clusters with random different data points, iterates once on
+// cluster assignment.
 float KMeansClusteringData::iterateNew(int k) {
     
+    assert(k >= dataPoints.size());
     clusters.clear();
-    
-    default_random_engine generator;
-    uniform_int_distribution<int> distribution(0, (int)dataPoints.size() - 1);
-    auto random = bind(distribution, generator);
     
     for (int i = 0; i < k; i++) {
         Cluster *cluster = new Cluster;
     assign:
-        cluster->center = dataPoints[random()]->values;
+        cluster->center = dataPoints[random((int)dataPoints.size())]->values;
         for (int j = 0; j < i; j++) {
             if (clusters[j]->center == cluster->center) {
                 goto assign;
@@ -118,6 +146,7 @@ float KMeansClusteringData::iterateNew(int k) {
     return assignClusters();
 }
 
+// Recalculates all cluster centers and iterates once on cluster assignment
 float KMeansClusteringData::iterateOld() {
     int numberOfClusters = (int)clusters.size();
     for (int i = 0; i < numberOfClusters; i++) {
@@ -127,6 +156,7 @@ float KMeansClusteringData::iterateOld() {
 }
 
 float KMeansClusteringData::iterateUntilNoReassignment(int k) {
+    assert(k >= dataPoints.size());
     float distances = iterateNew(k);
     float temp;
     while (true) {
