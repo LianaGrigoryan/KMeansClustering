@@ -50,7 +50,7 @@ private:
 public:
     
     // Parses file into private variables
-    void readARFF(ifstream file);
+    void readARFF(ifstream *file);
     
     // Returns sum of squared distances from each point to its cluster center
     float iterateNew(int k);

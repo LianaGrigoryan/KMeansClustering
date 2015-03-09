@@ -92,20 +92,20 @@ float KMeansClusteringData::assignClusters() {
     return distances;
 }
 
-void KMeansClusteringData::readARFF(ifstream file) {
+void KMeansClusteringData::readARFF(ifstream *file) {
     
-    assert(file.is_open());
+    assert(file->is_open());
     
     string text;
-    while (!file.eof()) {
-        file >> text;
+    while (file->eof()) {
+        *file >> text;
         if (text == "@attribute") {
-            file >> text;
+            *file >> text;
             attributes.push_back(text);
-            file >> text;
+            *file >> text;
             assert(text == "numeric");
         } else if (text == "@data") {
-            getline(file, text);
+            getline(*file, text);
             break;
         }
     }
@@ -113,7 +113,7 @@ void KMeansClusteringData::readARFF(ifstream file) {
     stringstream ss;
     string value;
     
-    while (getline(file, text)) {
+    while (getline(*file, text)) {
         ss << text;
         DataPoint *dataPoint = new DataPoint;
         while (getline(ss, value, ',')) {

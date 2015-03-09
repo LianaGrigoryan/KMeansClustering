@@ -24,9 +24,55 @@
 
 int main(int argc, const char *argv[]) {
     
-    string file;
-    cout << "File:" << endl;
-    cin >> file;
+    cout << "Enter full path for .arff file. Don't use the ~ shortcut." << endl;
+    
+filepathPrompt:
+    string path;
+    cin >> path;
+    ifstream file;
+    file.open(path);
+    if (!file.is_open()) {
+        cout << "File could not open. Reenter path." << endl;
+        goto filepathPrompt;
+    }
+    KMeansClusteringData data;
+    data.readARFF(&file);
+    bool qualityMessageShown = false;
+    
+kPrompt:
+    cout << "Enter number of clusters (k)." << endl;
+    int k;
+    cin >> k;
+    if (!qualityMessageShown) {
+        cout << "Note: Quality is the sum of squared distances of data points ";
+        cout << "from their closest cluster center." << endl;
+        qualityMessageShown = true;
+    }
+    cout << "k: " << k << ". Quality: " << data.iterateNew(k) << "." << endl;
+    
+anotherIterationPrompt:
+    cout << "Do you want another iteration? Type 'yes' or 'no'." << endl;
+    string anotherIteration;
+    cin >> anotherIteration;
+    if (anotherIteration == "yes") {
+        cout << "k: " << k << ". Quality: " << data.iterateOld() << "." << endl;
+        goto anotherIterationPrompt;
+    } else if (anotherIteration == "no") {
+        
+    newKPrompt:
+        cout << "Do you want a new value of k? Type 'yes' or 'no'." << endl;
+        string newK;
+        cin >> newK;
+        if (newK == "yes") {
+            goto kPrompt;
+        } else if (newK != "no") {
+            cout << "Input not recognized." << endl;
+            goto newKPrompt;
+        }
+    } else {
+        cout << "Input not recognized." << endl;
+        goto anotherIterationPrompt;
+    }
     
     return 0;
 }
