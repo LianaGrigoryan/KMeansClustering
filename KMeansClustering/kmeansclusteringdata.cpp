@@ -24,8 +24,7 @@ float distance(vector<float> a, vector<float> b) {
 }
 
 // Generates a random number from 0 to values - 1
-int random(int values) {
-    default_random_engine generator;
+int KMeansClusteringData::random(int values) {
     uniform_int_distribution<int> distribution(0, values - 1);
     return distribution(generator);
 }
@@ -97,7 +96,7 @@ void KMeansClusteringData::readARFF(ifstream *file) {
     assert(file->is_open());
     
     string text;
-    while (file->eof()) {
+    while (!file->eof()) {
         *file >> text;
         if (text == "@attribute") {
             *file >> text;
@@ -128,7 +127,7 @@ void KMeansClusteringData::readARFF(ifstream *file) {
 // cluster assignment.
 float KMeansClusteringData::iterateNew(int k) {
     
-    assert(k >= dataPoints.size());
+    assert(k <= dataPoints.size());
     clusters.clear();
     
     for (int i = 0; i < k; i++) {

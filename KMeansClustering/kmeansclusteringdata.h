@@ -45,6 +45,8 @@ private:
     vector<string> attributes;
     vector<DataPoint *> dataPoints;
     vector<Cluster *> clusters;
+    default_random_engine generator;
+    int random(int values);
     float assignClusters(); // Returns sum of squared distances
     
 public:
