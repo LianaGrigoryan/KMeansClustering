@@ -29,7 +29,7 @@ struct Cluster;
 struct DataPoint {
     vector<float> values;
     Cluster *cluster;
-    float assignCluster(vector<Cluster> clusters);  // Returns distance
+    float assignCluster(vector<Cluster *> clusters);    // Returns distance
 };
 
 struct Cluster {
@@ -45,6 +45,7 @@ private:
     vector<string> attributes;
     vector<DataPoint *> dataPoints;
     vector<Cluster *> clusters;
+    float assignClusters(); // Returns sum of squared distances
     
 public:
     
@@ -52,7 +53,8 @@ public:
     void readARFF(ifstream file);
     
     // Returns sum of squared distances from each point to its cluster center
-    float iterate(int k, bool newPoints);
+    float iterateNew(int k);
+    float iterateOld();
     
     // Iterates until no point reassigned to different cluster
     float iterateUntilNoReassignment(int k);
