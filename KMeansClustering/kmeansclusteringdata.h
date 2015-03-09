@@ -51,6 +51,8 @@ private:
     
 public:
     
+    int getDataPointsSize();
+    
     // Parses file into private variables
     void readARFF(ifstream *file);
     

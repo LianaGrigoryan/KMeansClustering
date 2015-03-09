@@ -33,7 +33,7 @@ int KMeansClusteringData::random(int values) {
 float DataPoint::assignCluster(vector<Cluster *> clusters) {
     float minDistance = FLT_MAX;
     float tempDistance;
-    Cluster *cluster = NULL;
+    cluster = NULL;
     int size = (int)clusters.size();
     for (int i = 0; i < size; i++) {
         tempDistance = distance(values, clusters[i]->center);
@@ -67,6 +67,7 @@ void Cluster::recalculateCenter() {
 // new random data point as its center.
 float KMeansClusteringData::assignClusters() {
     
+start:
     float distances = 0;
     int numberOfPoints = (int)dataPoints.size();
     for (int i = 0; i < numberOfPoints; i++) {
@@ -84,11 +85,15 @@ float KMeansClusteringData::assignClusters() {
             for (int j = 0; j < numberOfClusters; j++) {
                 clusters[j]->dataPoints.clear();
             }
-            return assignClusters();
+            goto start;
         }
     }
     
     return distances;
+}
+
+int KMeansClusteringData::getDataPointsSize() {
+    return (int)dataPoints.size();
 }
 
 void KMeansClusteringData::readARFF(ifstream *file) {
@@ -155,7 +160,7 @@ float KMeansClusteringData::iterateOld() {
 }
 
 float KMeansClusteringData::iterateUntilNoReassignment(int k, int times) {
-    assert(k >= dataPoints.size());
+    assert(k <= dataPoints.size());
     float minDistances = FLT_MAX;
     float distances;
     float temp;

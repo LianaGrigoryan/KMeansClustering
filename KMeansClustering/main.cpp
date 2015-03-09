@@ -18,6 +18,19 @@
     the program asks if a new value of k is desired, and restarts with that
     value, picking k new random data points.
  
+    Test results on hw5.2.arff after running iterateUntilNoReassignment 10,000
+    times for each k:
+ 
+    k   Quality
+    -----------
+    2   836,433
+    3   560,685
+    4   341,668
+    5   123,543
+    6   119,712
+ 
+    Estimate of correct number of clusters: 5.
+ 
  */
 
 #include "kmeansclusteringdata.h"

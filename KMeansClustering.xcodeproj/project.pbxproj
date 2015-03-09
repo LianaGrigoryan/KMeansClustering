@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		275259FF1AAD4141008EE6D8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27EF95441AABD42300601B4C /* main.cpp */; };
 		27716F5A1AABDA65000409F2 /* kmeansclusteringdata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27716F581AABDA65000409F2 /* kmeansclusteringdata.cpp */; };
-		27EF95451AABD42300601B4C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27EF95441AABD42300601B4C /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,6 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		275259FB1AAD39BE008EE6D8 /* test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 		27716F581AABDA65000409F2 /* kmeansclusteringdata.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = kmeansclusteringdata.cpp; sourceTree = "<group>"; };
 		27716F591AABDA65000409F2 /* kmeansclusteringdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kmeansclusteringdata.h; sourceTree = "<group>"; };
 		27EF95411AABD42300601B4C /* KMeansClustering */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = KMeansClustering; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				27EF95441AABD42300601B4C /* main.cpp */,
+				275259FB1AAD39BE008EE6D8 /* test.cpp */,
 				27716F581AABDA65000409F2 /* kmeansclusteringdata.cpp */,
 				27716F591AABDA65000409F2 /* kmeansclusteringdata.h */,
 			);
@@ -124,7 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27716F5A1AABDA65000409F2 /* kmeansclusteringdata.cpp in Sources */,
-				27EF95451AABD42300601B4C /* main.cpp in Sources */,
+				275259FF1AAD4141008EE6D8 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
